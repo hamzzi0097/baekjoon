@@ -1,2 +1,2 @@
 # baekjoon
-aaaa
+1일 1솔
