@@ -7,7 +7,7 @@
 //	return word == comp;
 //}
 //
-//// a°¡ ¸ÕÀú¸é false, b°¡ ¸ÕÀú¸é true¸¦ ¹İÈ¯ÇÏ´Â ÇÔ¼ö
+//// aê°€ ë¨¼ì €ë©´ false, bê°€ ë¨¼ì €ë©´ trueë¥¼ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜
 //bool comp(string a, string b) {
 //	if (a.length() > b.length()) return false;
 //	else if (a.length() < b.length()) return true;
@@ -17,18 +17,18 @@
 //}
 //
 //int main() {
-//	int wordNum;	// ÀÔ·Â¹ŞÀ» ´Ü¾îÀÇ ¼ö
-//	string word;	// ´Ü¾î¸¦ ÀÔ·Â ¹Ş´Â string
-//	vector<string> output;	// Ãâ·Â ¹è¿­À» ÀúÀåÇÏ´Â vector
-//	bool isSameWord;	// °°Àº ´Ü¾î¸¦ ÀÔ·Â ¹Ş¾Ò´ÂÁö È®ÀÎ ÇÏ´Â bool
+//	int wordNum;	// ì…ë ¥ë°›ì„ ë‹¨ì–´ì˜ ìˆ˜
+//	string word;	// ë‹¨ì–´ë¥¼ ì…ë ¥ ë°›ëŠ” string
+//	vector<string> output;	// ì¶œë ¥ ë°°ì—´ì„ ì €ì¥í•˜ëŠ” vector
+//	bool isSameWord;	// ê°™ì€ ë‹¨ì–´ë¥¼ ì…ë ¥ ë°›ì•˜ëŠ”ì§€ í™•ì¸ í•˜ëŠ” bool
 //
 //	cin >> wordNum;
 //
 //	for (int i = 0; i < wordNum; i++) {
-//		isSameWord = false; // Ç×»ó false·Î ÃÊ±âÈ­
+//		isSameWord = false; // í•­ìƒ falseë¡œ ì´ˆê¸°í™”
 //		cin >> word;
 //
-//		// °°Àº ´Ü¾î°¡ ÀÖ´Ù¸é ±âÁ¸ ´Ü¾î¸¦ ÀúÀåÇÏÁö ¾ÊÀ½
+//		// ê°™ì€ ë‹¨ì–´ê°€ ìˆë‹¤ë©´ ê¸°ì¡´ ë‹¨ì–´ë¥¼ ì €ì¥í•˜ì§€ ì•ŠìŒ
 //		for (int j = 0; j < output.size(); j++) {
 //			if (word == output[j]) {
 //				isSameWord = true;
@@ -40,7 +40,7 @@
 //		output.push_back(word);
 //	}
 //
-//	// sort ÇÔ¼ö¿Í Á÷Á¢ ¸¸µç comp ÇÔ¼ö¸¦ ÀÌ¿ëÇÏ¿© Á¤·Ä
+//	// sort í•¨ìˆ˜ì™€ ì§ì ‘ ë§Œë“  comp í•¨ìˆ˜ë¥¼ ì´ìš©í•˜ì—¬ ì •ë ¬
 //	sort(output.begin(), output.end(), comp);
 //
 //	for (int i = 0; i < output.size(); i++) {
