@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+	int N, K, output = 1;
+
+	cin >> N >> K;
+
+	// 분자
+	for (int i = K; i >= 1; i--) {
+		output = output * N;
+		N--;
+	}
+
+	// 분모
+	for (int i = K; i >= 1; i--) {
+		output = output / i;
+	}
+
+	cout << output;
+}
