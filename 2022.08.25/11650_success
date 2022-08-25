@@ -1,0 +1,29 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+bool comp(pair<int,int> a, pair<int, int> b) {
+	return a < b;
+}
+
+int main() {
+	int N;
+	int x, y;
+	vector<pair<int, int>> dots;
+	
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		cin >> x >> y;
+
+		pair<int, int> p = make_pair(x, y);
+		dots.push_back(p);
+	}
+
+	sort(dots.begin(), dots.end(), comp);
+
+	for (int i = 0; i < N; i++) {
+		cout << dots[i].first << " " << dots[i].second << "\n";
+	}
+}
