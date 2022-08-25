@@ -1,0 +1,49 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+class Person {
+public:
+	string name;
+	int age;
+	int index;
+	Person(string name, int age, int index) {
+		this->name = name;
+		this->age = age;
+		this->index = index;
+	}
+};
+
+// 1. 나이가 작은 순, 2.먼저 입력된 순 으로 정렬
+bool comp(Person a, Person b) {
+	if (a.age == b.age) {
+		return a.index < b.index;
+	}
+	else {
+		return a.age < b.age;
+	}
+}
+
+int main() {
+	int N;
+	int age;
+	string name;
+	vector<Person> perVec;
+
+	cin >> N;
+
+	// int변수 i로 인덱스 부여
+	for (int i = 0; i < N; i++) {
+		cin >> age >> name;
+
+		Person p(name, age, i);
+		perVec.push_back(p);
+	}
+
+	sort(perVec.begin(), perVec.end(), comp);
+
+	for (int i = 0; i < N; i++) {
+		cout << perVec[i].age << " " << perVec[i].name << "\n";
+	}
+}
