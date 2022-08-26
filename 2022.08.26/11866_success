@@ -1,0 +1,29 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int main() {
+	int N, K;
+	int index;
+	vector<int> v;
+
+	cin >> N >> K;
+
+	// v의 인덱스가 0부터 시작하므로 시작 인덱스를 K-1로 지정
+	index = K - 1;
+
+	for (int i = 1; i <= N; i++) {
+		v.push_back(i);
+	}
+
+	cout << "<";
+
+	for (int i = 1; i < N; i++) {
+		cout << v[index] << ", ";
+		v.erase(v.begin() + index);
+		index = (index + K - 1) % v.size();
+	}
+
+	cout << v[0] << ">";
+}
