@@ -1,0 +1,64 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int main() {
+	// B=66, W=87
+	int N, M;
+	int least = 64;	// 8x8의 최대 틀린 갯수인 64로 초기화
+	string input;
+	vector<string> map;	// 입력된 맵
+	vector<vector<int>> wrongSpot;	// [0,0]이 W로 시작할 때 기준
+
+	cin >> N >> M;
+
+	// 입력 저장
+	for (int i = 0; i < N; i++) {
+		cin >> input;
+		map.push_back(input);
+	}
+
+	// 틀린 부분 = 1, 맞는 부분 = 0 으로 wrongSpot에 입력
+	for (int i = 0; i < N; i++) {
+		vector<int> v;
+		for (int j = 0; j < M; j++) {
+			if ((i + j) % 2 == 0) {
+				if (map[i][j] == 'W') {
+					v.push_back(0);
+				}
+				else {
+					v.push_back(1);
+				}
+			}
+			else {
+				if (map[i][j] == 'W') {
+					v.push_back(1);
+				}
+				else {
+					v.push_back(0);
+				}
+			}
+		}
+		wrongSpot.push_back(v);
+	}
+
+	for (int i = 0; i < N - 7; i++) {
+		for (int j = 0; j < M - 7; j++) {
+			int wrongCnt = 0;
+			for (int k = 0; k < 8; k++) {
+				for (int l = 0; l < 8; l++) {
+					wrongCnt += wrongSpot[i + k][j + l];
+				}
+			}
+
+			// [0,0]을 W로 정했을 때의 wrongCnt가 절반 이상이라면,
+			// [0,0]을 B로 정한 경우로 생각함
+			if (wrongCnt > 32)	wrongCnt = 64 - wrongCnt;
+
+			if (least > wrongCnt) least = wrongCnt;
+		}
+	}
+
+	cout << least;
+}
