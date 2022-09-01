@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+#include <stack>
+using namespace std;
+
+int main() {
+	ios_base::sync_with_stdio(0); cin.tie(0);
+	int N;
+	string bracket;
+	stack<char> s;
+	bool b;
+	
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		cin >> bracket;
+		b = true;
+		while (1) {
+			if (s.empty())	break;
+			s.pop();
+		}
+		
+		for (int j = 0; j < bracket.size(); j++) {
+			if (bracket[j] == '(') {
+				s.push(bracket[j]);
+			}
+			else {
+				if (s.empty()) {
+					cout << "NO" << "\n";
+					b = false;
+					break;
+				}
+				else {
+					s.pop();
+				}
+			}
+		}
+		if (b) {
+			if (s.empty()) {
+				cout << "YES" << "\n";
+			}
+			else {
+				cout << "NO" << "\n";
+			}
+		}
+	}
+}
