@@ -1,0 +1,28 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    int N;
+    int num;
+    int sum=0;
+    vector<int> v;
+    
+    cin >> N;
+    
+    for (int i=0;i<N;i++){
+        cin >> num;
+        v.push_back(num);
+    }
+    
+    sort(v.begin(), v.end());
+    
+    for (int i=0;i<N;i++){
+        sum = sum + (N-i) * v[i];
+    }
+    
+    cout << sum << "\n";
+}
