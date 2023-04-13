@@ -1,13 +1,8 @@
 #include <iostream>
 using namespace std;
 
-int N;
-
-/*
-star가 있으면 0
-blank면 1
-*/
 bool starArr[3000][3000] = { 0, };
+int N;
 
 /*
 star => 0
