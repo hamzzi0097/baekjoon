@@ -4,8 +4,8 @@ using namespace std;
 int N;
 
 /*
-star°¡ ÀÖÀ¸¸é 0
-blank¸é 1
+starê°€ ìžˆìœ¼ë©´ 0
+blankë©´ 1
 */
 bool starArr[3000][3000] = { 0, };
 
@@ -13,17 +13,17 @@ bool starArr[3000][3000] = { 0, };
 star => 0
 blank => 1
 */
-// blank¸¦ °è»ê
-void checkBlank(int s_row, int e_row, int s_col, int e_col) {	
+// blankë¥¼ ê³„ì‚°
+void checkBlank(int s_row, int e_row, int s_col, int e_col) {
 	int n = (e_row - s_row) / 3;
-
-	if (n == 1)return;
 
 	for (int i = s_row + n; i < s_row + n * 2; i++) {
 		for (int j = s_col + n; j < s_col + n * 2; j++) {
 			starArr[i][j] = 1;
 		}
 	}
+
+	if (n == 1)return;
 
 	checkBlank(s_row, s_row + n, s_col, s_col + n);
 	checkBlank(s_row, s_row + n, s_col + n, s_col + n * 2);
@@ -37,44 +37,61 @@ void checkBlank(int s_row, int e_row, int s_col, int e_col) {
 	checkBlank(s_row + n * 2, s_row + n * 3, s_col + n * 2, s_col + n * 3);
 }
 
-/*
-star => 1
-blank => 0
-*/
-// star¸¦ °è»ê
-void checkstar(int start_row, int end_row, int start_col, int end_col) {
-	if (end_row - start_row == 1 && end_col - start_col == 1) {
-		starArr[start_row][start_col] = 1;
-		return;
-	}
-
-	int n = (end_row - start_row) / 3;
-
-	checkstar(start_row, start_row + n, start_col, start_col + n);
-	checkstar(start_row, start_row + n, start_col + n, start_col + n * 2);
-	checkstar(start_row, start_row + n, start_col + n * 2, start_col + n * 3);
-
-	checkstar(start_row + n, start_row + n * 2, start_col, start_col + n);
-	checkstar(start_row + n, start_row + n * 2, start_col + n * 2, start_col + n * 3);
-
-	checkstar(start_row + n * 2, start_row + n * 3, start_col, start_col + n);
-	checkstar(start_row + n * 2, start_row + n * 3, start_col + n, start_col + n * 2);
-	checkstar(start_row + n * 2, start_row + n * 3, start_col + n * 2, start_col + n * 3);
-}
-
 int main() {
 	cin >> N;
-	checkstar(0, N, 0, N);
+	checkBlank(0, N, 0, N);
 
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {
-			if (starArr[i][j]==1) {
-				cout << "*";
+			if (starArr[i][j] == 1) {
+				cout << " ";
 			}
 			else {
-				cout << " ";
+				cout << "*";
 			}
 		}
 		cout << "\n";
 	}
 }
+
+/*
+star => 1
+blank => 0
+*/
+// starë¥¼ ê³„ì‚°
+//void checkstar(int start_row, int end_row, int start_col, int end_col) {
+//	if (end_row - start_row == 1 && end_col - start_col == 1) {
+//		starArr[start_row][start_col] = 1;
+//		return;
+//	}
+//
+//	int n = (end_row - start_row) / 3;
+//
+//	checkstar(start_row, start_row + n, start_col, start_col + n);
+//	checkstar(start_row, start_row + n, start_col + n, start_col + n * 2);
+//	checkstar(start_row, start_row + n, start_col + n * 2, start_col + n * 3);
+//
+//	checkstar(start_row + n, start_row + n * 2, start_col, start_col + n);
+//	checkstar(start_row + n, start_row + n * 2, start_col + n * 2, start_col + n * 3);
+//
+//	checkstar(start_row + n * 2, start_row + n * 3, start_col, start_col + n);
+//	checkstar(start_row + n * 2, start_row + n * 3, start_col + n, start_col + n * 2);
+//	checkstar(start_row + n * 2, start_row + n * 3, start_col + n * 2, start_col + n * 3);
+//}
+//
+//int main() {
+//	cin >> N;
+//	checkstar(0, N, 0, N);
+//
+//	for (int i = 0; i < N; i++) {
+//		for (int j = 0; j < N; j++) {
+//			if (starArr[i][j] == 1) {
+//				cout << "*";
+//			}
+//			else {
+//				cout << " ";
+//			}
+//		}
+//		cout << "\n";
+//	}
+//}
